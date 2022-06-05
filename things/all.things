@@ -1,1 +1,2 @@
 Thing sonoff:4:6cfc5a5eaa:10013b65a1 "Irrigation" (sonoff:account:6cfc5a5eaa) @ "Garden" [deviceid = "10013b65a1"]
+Thing daikin:ac_unit:192_168_100_195 "Daikin AC Unit" [host = "192.168.100.194", secure = false, refresh = 60]
