@@ -1,4 +1,4 @@
-rule "irrigation on/off"
+rule "irrigation - auto stop"
 when
     Time cron "0/10 * * * * ? *"
 then
@@ -12,32 +12,31 @@ then
 
         if (start_time == 0) {
 
-        // zone is running, setting the start time
+            // zone is running, setting the start time
 
-        val start_timestamp = now.toInstant.toEpochMilli
-        item_zone_start_time.postUpdate(start_timestamp);
-        logInfo(item_zone.label, "zone has started, start time: {}, run time: {} min", start_timestamp.toString, run_time.toString);
+            val start_timestamp = now.toInstant.toEpochMilli
+            item_zone_start_time.postUpdate(start_timestamp);
+            logInfo(item_zone.label, "{} has started, run time: {} min", item_zone.label, run_time.toString);
         } 
 
         if (start_time > 0) {
 
-        // zone in running, start time is set
+            // zone in running, start time is set
 
-        val stop_timestamp = start_time + run_time * 60 * 1000;
+            val stop_timestamp = start_time + run_time * 60 * 1000;
 
-        if (now.toInstant.toEpochMilli >= stop_timestamp) {
+            if (now.toInstant.toEpochMilli >= stop_timestamp) {
 
-            // zone should be stopped
+                // zone should be stopped
 
-            item_zone.sendCommand(OFF);
-            item_zone_start_time.postUpdate(0);
-            logInfo(item_zone.label, "zone turned off");
-        } else {
-            val diff = (stop_timestamp - now.toInstant.toEpochMilli) / 1000 / 60;
-            logInfo(item_zone.label, "zone is still running, remaining time: {} min", diff.toString);
+                item_zone.sendCommand(OFF);
+                item_zone_start_time.postUpdate(0);
+                logInfo(item_zone.label, "{} turned off", item_zone.label);
+            } else {
+                val diff = (stop_timestamp - now.toInstant.toEpochMilli) / 1000 / 60;
+                logInfo(item_zone.label, "{} is still running, remaining time: {} min", item_zone.label, diff.toString);
+            }
         }
-        }
-
     }
 
     if (state == OFF) {
@@ -46,13 +45,61 @@ then
 
         if (start_time > 0) {
             item_zone_start_time.postUpdate(0);
-            logInfo(item_zone.label, "zone stopped, set start time to 0");
+            logInfo(item_zone.label, "{} was stopped, set start time to 0", item_zone.label);
         }
     }  
     ]
 
-    startStopZone.apply(Irrigation_Switch0, zone_1_start_time,   zone_1_run_time);
-    startStopZone.apply(Irrigation_Switch1, zone_2_3_start_time, zone_2_3_run_time);
-    startStopZone.apply(Irrigation_Switch2, zone_4_start_time,   zone_4_run_time);
-    startStopZone.apply(Irrigation_Switch3, zone_5_start_time,   zone_5_run_time);
+    startStopZone.apply(zone_1_switch, zone_1_start_time,   zone_1_run_time);
+    startStopZone.apply(zone_2_3_switch, zone_2_3_start_time, zone_2_3_run_time);
+    startStopZone.apply(zone_4_switch, zone_4_start_time,   zone_4_run_time);
+    startStopZone.apply(zone_5_switch, zone_5_start_time,   zone_5_run_time);
+end
+
+rule "irrigation - start all"
+when
+    Item zones_start_all received command ON
+then
+    logInfo("irrigation", "all zones started")
+
+    var run1 = (zone_1_run_time.state as Number).intValue
+    var run_2_3 = run1 + (zone_2_3_run_time.state as Number).intValue
+    var run_4 = run_2_3 + (zone_4_run_time.state as Number).intValue
+    var run_5 = run_4 + (zone_5_run_time.state as Number).intValue
+
+    zone_1_switch.sendCommand(ON)
+
+    createTimer(now.plusMinutes(run1), [|
+        if (zones_start_all.state == ON) {
+            zone_2_3_switch.sendCommand(ON)
+        }
+    ])
+
+    createTimer(now.plusMinutes(run_2_3), [|
+        if (zones_start_all.state == ON) {
+            zone_4_switch.sendCommand(ON)
+        }
+    ])
+
+    createTimer(now.plusMinutes(run_4), [|
+        if (zones_start_all.state == ON) {
+            zone_5_switch.sendCommand(ON)
+        }
+    ])
+
+    createTimer(now.plusMinutes(run_5), [|
+        zones_start_all.sendCommand(OFF)
+    ])
+end
+
+rule "irrigation - stop all"
+when
+    Item zones_start_all received command OFF
+then
+    logInfo("irrigation", "all zones turned off")
+    
+    zone_1_switch.sendCommand(OFF)
+    zone_2_3_switch.sendCommand(OFF)
+    zone_4_switch.sendCommand(OFF)
+    zone_5_switch.sendCommand(OFF)
 end

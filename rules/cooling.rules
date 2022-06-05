@@ -1,0 +1,18 @@
+rule "cooling - turn on/off"
+when
+    Time cron "0 0/1 * * * ? *"
+then
+    var state = DaikinACUnit_Power.state
+    var setPoint = DaikinACUnit_SetPoint.state as Number
+    var temperature = ThermometerLiving_temperatureliving.state as Number
+
+    if (temperature > setPoint && state == OFF) {
+        DaikinACUnit_Power.sendCommand(ON)
+        logInfo("cooling", "Daikin AC was turned ON, setPoint: {}, temperature: {}", setPoint, temperature)
+    }
+
+    if (temperature < setPoint - 1 && state == ON) {
+        DaikinACUnit_Power.sendCommand(OFF)
+        logInfo("cooling", "Daikin AC was turned OFF, setPoint: {}, temperature: {}", setPoint, temperature)
+    }
+end
