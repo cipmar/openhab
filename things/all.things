@@ -6,3 +6,30 @@ Thing mqtt:topic:a188c31189:heating_salus "Heating Relay" (mqtt:broker:a188c3118
     Channels:
         Type switch : power "Power" [commandTopic = "zigbee2mqtt/heating_salus/set",   stateTopic = "zigbee2mqtt/heating_salus", transformationPattern = "JSONPATH:$.state"]
 }
+
+Thing mqtt:topic:a188c31189:thermometer_bedroom "Thermometer Bedroom" (mqtt:broker:a188c31189) {
+    Channels:
+        Type number : temperature_bedroom "Temperature" [cstateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.temperature"]
+        Type number : humidity_bedroom "Humidity" [cstateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.humidity"]
+        Type number : pressure_bedroom "Pressure" [cstateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.pressure"]
+        Type number : linkquality_bedroom "Link Quality" [cstateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.linkquality"]
+        Type number : battery_bedroom "Battery" [cstateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.battery"]
+}
+
+Thing mqtt:topic:a188c31189:thermometer_childroom "Thermometer Childroom" (mqtt:broker:a188c31189) {
+    Channels:
+        Type number : temperature_childroom "Temperature" [cstateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.temperature"]
+        Type number : humidity_childroom "Humidity" [cstateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.humidity"]
+        Type number : pressure_childroom "Pressure" [cstateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.pressure"]
+        Type number : linkquality_childroom "Link Quality" [cstateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.linkquality"]
+        Type number : battery_childroom "Battery" [cstateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.battery"]
+}
+
+Thing mqtt:topic:a188c31189:thermometer_living "Thermometer Living" (mqtt:broker:a188c31189) {
+    Channels:
+        Type number : temperature_living "Temperature" [cstateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.temperature"]
+        Type number : humidity_living "Humidity" [cstateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.humidity"]
+        Type number : pressure_living "Pressure" [cstateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.pressure"]
+        Type number : linkquality_living "Link Quality" [cstateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.linkquality"]
+        Type number : battery_living "Battery" [cstateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.battery"]
+}
