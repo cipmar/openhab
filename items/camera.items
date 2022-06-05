@@ -1,0 +1,11 @@
+Group camera_back "Camera - Back" (garden) ["Equipment"]
+String camera_back_imageurl "Image URL" <video> (camera_back) ["Point"] {channel="ipcamera:onvif:4d5f64f06c:imageUrl"}
+String camera_back_mjpegurl "Mpeg URL" <video> (camera_back) ["Point"] {channel="ipcamera:onvif:4d5f64f06c:mjpegUrl"}
+
+Group camera_front "Camera - Front" (garden) ["Equipment"]
+String camera_front_imageurl "Image URL" <video> (camera_front) ["Point"] {channel="ipcamera:onvif:21ff32b784:imageUrl"}
+String camera_front_mjpegurl "Mpeg URL" <video> (camera_front) ["Point"] {channel="ipcamera:onvif:21ff32b784:mjpegUrl"}
+
+Group camera_indoor "Camera - Indoor" (living) ["Equipment"]
+String camera_indoor_imageurl "Image URL" <video> (camera_indoor) ["Point"] {channel="ipcamera:onvif:7aba8c8dc2:imageUrl"}
+String camera_indoor_mjpegurl "Mpeg URL" <video> (camera_indoor) ["Point"] {channel="ipcamera:onvif:7aba8c8dc2:mjpegUrl"}

@@ -4,50 +4,50 @@ when
 then
     val startStopZone = [ GenericItem item_zone, GenericItem item_zone_start_time, GenericItem item_zone_run_time |
 
-    val start_time = if (item_zone_start_time.state == NULL) 0 else item_zone_start_time.state as Number;
-    val state = item_zone.state;
-    val run_time = item_zone_run_time.state as Number
+        val start_time = if (item_zone_start_time.state == NULL) 0 else item_zone_start_time.state as Number;
+        val state = item_zone.state;
+        val run_time = item_zone_run_time.state as Number
 
-    if (state == ON) {
+        if (state == ON) {
 
-        if (start_time == 0) {
+            if (start_time == 0) {
 
-            // zone is running, setting the start time
+                // zone is running, setting the start time
 
-            val start_timestamp = now.toInstant.toEpochMilli
-            item_zone_start_time.postUpdate(start_timestamp);
-            logInfo(item_zone.label, "{} has started, run time: {} min", item_zone.label, run_time.toString);
-        } 
+                val start_timestamp = now.toInstant.toEpochMilli
+                item_zone_start_time.postUpdate(start_timestamp);
+                logInfo(item_zone.label, "{} has started, run time: {} min", item_zone.label, run_time.toString);
+            } 
 
-        if (start_time > 0) {
+            if (start_time > 0) {
 
-            // zone in running, start time is set
+                // zone in running, start time is set
 
-            val stop_timestamp = start_time + run_time * 60 * 1000;
+                val stop_timestamp = start_time + run_time * 60 * 1000;
 
-            if (now.toInstant.toEpochMilli >= stop_timestamp) {
+                if (now.toInstant.toEpochMilli >= stop_timestamp) {
 
-                // zone should be stopped
+                    // zone should be stopped
 
-                item_zone.sendCommand(OFF);
-                item_zone_start_time.postUpdate(0);
-                logInfo(item_zone.label, "{} turned off", item_zone.label);
-            } else {
-                val diff = (stop_timestamp - now.toInstant.toEpochMilli) / 1000 / 60;
-                logInfo(item_zone.label, "{} is still running, remaining time: {} min", item_zone.label, diff.toString);
+                    item_zone.sendCommand(OFF);
+                    item_zone_start_time.postUpdate(0);
+                    logInfo(item_zone.label, "{} turned off", item_zone.label);
+                } else {
+                    val diff = (stop_timestamp - now.toInstant.toEpochMilli) / 1000 / 60;
+                    logInfo(item_zone.label, "{} is still running, remaining time: {} min", item_zone.label, diff.toString);
+                }
             }
         }
-    }
 
-    if (state == OFF) {
+        if (state == OFF) {
 
-        // zone is turned off
+            // zone is turned off
 
-        if (start_time > 0) {
-            item_zone_start_time.postUpdate(0);
-            logInfo(item_zone.label, "{} was stopped, set start time to 0", item_zone.label);
-        }
-    }  
+            if (start_time > 0) {
+                item_zone_start_time.postUpdate(0);
+                logInfo(item_zone.label, "{} was stopped, set start time to 0", item_zone.label);
+            }
+        }  
     ]
 
     startStopZone.apply(zone_1_switch, zone_1_start_time,   zone_1_run_time);

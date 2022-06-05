@@ -1,4 +1,3 @@
-Group garden "Garden" ["Garden"]
 Group irrigation "Irrigation" (garden) ["Equipment"]
 
 Switch zones_start_all "Start All" <switch> (irrigation) ["Switch"]
