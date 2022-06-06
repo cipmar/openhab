@@ -1,3 +1,18 @@
+Thing mqtt:broker:a188c31189 "MQTT Broker" [
+    clientid = "cfcda536-b860-472f-8463-42bae05b3722", 
+    publickeypin = true,
+    lwtQos = 0,
+    keepAlive = 60,
+    qos = 0,
+    reconnectTime = 60000,
+    port = 1883,
+    host = "localhost",
+    secure = false,
+    certificatepin = true,
+    lwtRetain = true,
+    enableDiscovery = true
+]
+
 Thing sonoff:4:6cfc5a5eaa:10013b65a1 "Irrigation" (sonoff:account:6cfc5a5eaa) @ "Garden" [deviceid = "10013b65a1"]
 
 Thing daikin:ac_unit:192_168_100_195 "Daikin AC Unit" [host = "192.168.100.194", secure = false, refresh = 60]
@@ -42,3 +57,16 @@ Thing mqtt:topic:a188c31189:door_senzor1 "Window Sensor" (mqtt:broker:a188c31189
         Type number : temperature "Temperature" [stateTopic = "zigbee2mqtt/door_senzor1", transformationPattern = "JSONPATH:$.temperature"]
         Type number : voltage "Voltage" [stateTopic = "zigbee2mqtt/door_senzor1", transformationPattern = "JSONPATH:$.voltage"]
 }
+
+Thing mqtt:topic:a188c31189:button1 "Button" (mqtt:broker:a188c31189) {
+    Channels:
+        Type string : action "Action" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JSONPATH:$.action"]
+        Type number : battery "Battery" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JSONPATH:$.battery"]
+        Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JSONPATH:$.linkquality"]
+        Type number : voltage "Voltage" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JSONPATH:$.voltage"]
+}
+
+Thing openweathermap:weather-and-forecast:1be22a6f73:local "Weather and Forecast" (openweathermap:weather-api:1be22a6f73) [forecastDays = 1, location = "47.134669501601344,27.55429565906525", forecastHours = 96 ]
+
+Thing openweathermap:air-pollution:1be22a6f73:local "Air Pollution" (openweathermap:weather-api:1be22a6f73) [location = "47.134669501601344,27.55429565906525", forecastHours = 0 ]
+
