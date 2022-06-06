@@ -1,0 +1,7 @@
+Group window_bedroom "Window Bedroom" (bedroom) ["Window"]
+
+Contact WindowSensor_WindowOpenClose "Open close" <window> (window_bedroom) ["OpenState"] {channel = "mqtt:topic:a188c31189:door_senzor1:window_open_close"}
+Number WindowSensor_Battery "Battery" <battery> (window_bedroom) ["Point"] {channel = "mqtt:topic:a188c31189:door_senzor1:battery"}
+Number WindowSensor_Linkquality "Linkquality" <qualityofservice> (window_bedroom) ["Point"] {channel = "mqtt:topic:a188c31189:door_senzor1:linkquality"}
+Number:Temperature WindowSensor_Temperature "Temperature" <temperature> (window_bedroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:door_senzor1:temperature"}
+Number WindowSensor_Voltage "Voltage" (window_bedroom) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:door_senzor1:voltage"}
