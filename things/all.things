@@ -112,3 +112,24 @@ Thing mqtt:topic:philips_lightstrip "Philips Lightstrip" (mqtt:broker:a188c31189
         Type string : effect "Effect" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", transformationPatternOut = "JS:effect.js"]
         Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPattern = "JSONPATH:$.linkquality"]
 }
+
+Thing tapocontrol:P100:5cd79ad614 "Plug - Tablet" (tapocontrol:bridge:1043758637) [ipAddress = "192.168.100.126", pollingInterval = 10 ]
+
+Thing mqtt:topic:plug_kitchen "Plug - Daikin" (mqtt:broker:a188c31189) {
+    Channels:
+        Type number : power "Power" [stateTopic = "zigbee2mqtt/plug_kitchen", transformationPattern = "JSONPATH:$.power"]
+        Type number : energy "Energy" [stateTopic = "zigbee2mqtt/plug_kitchen", transformationPattern = "JSONPATH:$.energy"]
+        Type number : temperature "Temperature" [stateTopic = "zigbee2mqtt/plug_kitchen", transformationPattern = "JSONPATH:$.device_temperature"]
+        Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/plug_kitchen", transformationPattern = "JSONPATH:$.linkquality"]
+        Type switch : switch "Switch" [commandTopic = "zigbee2mqtt/plug_kitchen/set", stateTopic = "zigbee2mqtt/plug_kitchen", transformationPattern = "JSONPATH:$.state", off = "OFF", on = "ON"]
+}
+
+Thing miio:vacuum:8381e35a0e "Roborock" [
+    refreshInterval = 30,
+    host = "192.168.100.222",
+    model = "roborock.vacuum.s5",
+    communication = "direct",
+    deviceId = "261389551",
+    timeout = 15000,
+    token = "79316672335964766a47344367393646"
+]
