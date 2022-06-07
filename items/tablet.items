@@ -1,0 +1,7 @@
+Group tablet "Tablet" (corridor) ["Equipment"]
+
+Number TabletStatus_Battery "Battery" (tablet) ["Point"] {channel = "mqtt:topic:tablet_statue:tablet_battery"}
+String TabletStatus_Plugged "Plugged" (tablet) ["Point"] {channel = "mqtt:topic:tablet_statue:tablet_plugged"}
+Number TabletStatus_FreeMemory "Free Memory" (tablet) ["Point"] {channel = "mqtt:topic:tablet_statue:tablet_free_memory"}
+Number TabletStatus_WIFISignal "WIFI Signal" (tablet) ["Point"] {channel = "mqtt:topic:tablet_statue:tablet_wifisignal"}
+Number:Temperature TabletStatus_BatteryTemperature "Battery Temperature" <temperature> (tablet) ["Measurement", "Temperature"] {channel = "mqtt:topic:tablet_statue:tablet_batteryTemperature"}

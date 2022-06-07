@@ -70,3 +70,45 @@ Thing openweathermap:weather-and-forecast:1be22a6f73:local "Weather and Forecast
 
 Thing openweathermap:air-pollution:1be22a6f73:local "Air Pollution" (openweathermap:weather-api:1be22a6f73) [location = "47.134669501601344,27.55429565906525", forecastHours = 0 ]
 
+Thing mqtt:topic:a188c31189:switch_bedroom "Switch Bedroom" (mqtt:broker:a188c31189) {
+    Channels:
+        Type switch : switch_bedroom "Switch Bedroom" [commandTopic = "zigbee2mqtt/switch_bedroom/set", stateTopic = "zigbee2mqtt/switch_bedroom", transformationPattern = "JSONPATH:$.state", off = "OFF", on = "ON"]
+        Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/switch_bedroom", transformationPattern = "JSONPATH:$.linkquality"]
+}
+
+Thing mqtt:topic:switch_living "Switch Couch" (mqtt:broker:a188c31189) {
+    Channels:
+        Type switch : switch_living "Switch Couch" [commandTopic = "zigbee2mqtt/switch_living/set", stateTopic = "zigbee2mqtt/switch_living", transformationPattern = "JSONPATH:$.state", off = "OFF", on = "ON"]
+        Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/switch_living", transformationPattern = "JSONPATH:$.linkquality"]
+}
+
+Thing mqtt:topic:a188c31189:switch_living2 "Switch Living" (mqtt:broker:a188c31189) {
+    Channels:
+        Type switch : switch_living2 "Switch Living" [commandTopic = "zigbee2mqtt/switch_living2/set", stateTopic = "zigbee2mqtt/switch_living2", transformationPattern = "JSONPATH:$.state", off = "OFF", on = "ON"]
+        Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/switch_living", transformationPattern = "JSONPATH:$.linkquality"]
+}
+
+Thing mqtt:topic:a188c31189:78021203b0 "Raspberry" (mqtt:broker:a188c31189) {
+    Channels:
+        Type number : mqtt_cpu_temperature "CPU Temperature" [stateTopic = "mqtt/cputemp"]
+        Type number : mqtt_free_memory "Free Memory" [stateTopic = "mqtt/freemem"]
+        Type number : mqtt_free_disk "Free Disk" [stateTopic = "mqtt/freedisk"]
+}
+
+Thing mqtt:topic:tablet_statue "Tablet Status" (mqtt:broker:a188c31189) {
+    Channels:
+        Type number : tablet_battery "Battery" [stateTopic = "fully/deviceInfo/tablet", transformationPattern = "JSONPATH:$.batteryLevel"]
+        Type string : tablet_plugged "Plugged" [stateTopic = "fully/deviceInfo/tablet", transformationPattern = "JSONPATH:$.plugged"]
+        Type number : tablet_free_memory "Free Memory" [stateTopic = "fully/deviceInfo/tablet", transformationPattern = "JSONPATH:$.ramFreeMemory"]
+        Type number : tablet_wifisignal "WIFI Signal" [stateTopic = "fully/deviceInfo/tablet", transformationPattern = "JSONPATH:$.wifiSignalLevel"]
+        Type number : tablet_batteryTemperature "Battery Temperature" [stateTopic = "fully/deviceInfo/tablet", transformationPattern = "JSONPATH:$.batteryTemperature"]
+}
+
+Thing mqtt:topic:philips_lightstrip "Philips Lightstrip" (mqtt:broker:a188c31189) {
+    Channels:
+        Type switch : state "State" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPattern = "JSONPATH:$.state", off = "OFF", on = "TOGGLE"]
+        Type number : brightness "Brightness" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPatternOut = "JS:brightness.js", transformationPattern = "JSONPATH:$.brightness"]
+        Type color : color "Color" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", transformationPatternOut = "JS:rgb.js", colorMode = "RGB"]
+        Type string : effect "Effect" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", transformationPatternOut = "JS:effect.js"]
+        Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPattern = "JSONPATH:$.linkquality"]
+}
