@@ -1,5 +1,5 @@
-Group raspberry "Raspberry" (corridor) ["Equipment"]
+Group raspberry "Raspberry" <raspberrypi> (corridor) ["Equipment"]
 
-Number:Temperature MQTTThing_MQTTCPUTemperature "Temperature" <temperature> (raspberry) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_cpu_temperature"}
-Number MQTTThing_MQTTFreeMemory "Free Memory" (raspberry) ["Point"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_free_memory"}
-Number MQTTThing_MQTTFreeDisk "Free Disk" (raspberry) ["Point"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_free_disk"}
+Number:Temperature MQTTThing_MQTTCPUTemperature "Temperature" <temperature> (raspberry) ["Point"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_cpu_temperature"}
+Number MQTTThing_MQTTFreeMemory "Free Memory" <rammemory> (raspberry) ["Point"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_free_memory"}
+Number MQTTThing_MQTTFreeDisk "Free Disk" <harddisk> (raspberry) ["Point"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_free_disk"}

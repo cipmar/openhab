@@ -1,23 +1,29 @@
 Group thermometer_bedroom "Thermometer Bedroom" (bedroom) ["Equipment"]
 
-Number:Temperature ThermometerBedroom_temperaturebedroom "Temperature" <temperature> (thermometer_bedroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:temperature_bedroom"}
-Number ThermometerBedroom_humiditybedroom "Humidity" (thermometer_bedroom) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:humidity_bedroom"}
-Number ThermometerBedroom_pressurebedroom "Pressure" (thermometer_bedroom) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:pressure_bedroom"}
-Number ThermometerBedroom_linkqualitybedroom "Link Quality" (thermometer_bedroom) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:linkquality_bedroom"}
-Number ThermometerBedroom_batterybedroom "Battery" (thermometer_bedroom) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:battery_bedroom"}
+Group:Number:MIN min_temperature "Min Temperature [%.2f ˚C]" <temperature> (thermostat) ["Measurement", "Temperature"]
+
+Number:Temperature ThermometerBedroom_temperaturebedroom "Temperature [%.f ˚C]" <temperature> (min_temperature, thermometer_bedroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:temperature_bedroom"}
+Number ThermometerBedroom_humiditybedroom "Humidity [%.0f]" <humidity> (thermometer_bedroom) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:humidity_bedroom"}
+Number ThermometerBedroom_pressurebedroom "Pressure [%.0f hPa]" <pressure> (thermometer_bedroom) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:pressure_bedroom"}
+Number ThermometerBedroom_linkqualitybedroom "Link Quality" <qualityofservice> (thermometer_bedroom) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:linkquality_bedroom"}
+Number ThermometerBedroom_batterybedroom "Battery" <battery> (thermometer_bedroom) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:battery_bedroom"}
+Number ThermometerBedroom_voltagebedroom "Voltage" <voltage> (thermometer_bedroom) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:voltage_bedroom"}
 
 Group thermometer_childroom "Thermometer Childroom" (childroom) ["Equipment"]
 
-Number:Temperature ThermometerChildroom_temperaturechildroom "Temperature" <temperature> (thermometer_childroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:temperature_childroom"}
-Number ThermometerChildroom_humiditychildroom "Humidity" (thermometer_childroom) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:humidity_childroom"}
-Number ThermometerChildroom_pressurechildroom "Pressure" (thermometer_childroom) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:pressure_childroom"}
-Number ThermometerChildroom_linkqualitychildroom "Link Quality" (thermometer_childroom) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:linkquality_childroom"}
-Number ThermometerChildroom_batterychildroom "Battery" (thermometer_childroom) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:battery_childroom"}
+Number:Temperature ThermometerChildroom_temperaturechildroom "Temperature [%.f ˚C]" <temperature> (min_temperature, thermometer_childroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:temperature_childroom"}
+Number ThermometerChildroom_humiditychildroom "Humidity [%.0f]" <humidity> (thermometer_childroom) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:humidity_childroom"}
+Number ThermometerChildroom_pressurechildroom "Pressure [%.0f hPa]" <pressure> (thermometer_childroom) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:pressure_childroom"}
+Number ThermometerChildroom_linkqualitychildroom "Link Quality" <qualityofservice> (thermometer_childroom) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:linkquality_childroom"}
+Number ThermometerChildroom_batterychildroom "Battery" <battery> (thermometer_childroom) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:battery_childroom"}
+Number ThermometerChildroom_voltagechildroom "Voltage" <voltage> (thermometer_childroom) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:voltage_childroom"}
+
 
 Group thermometer_living "Thermometer Living" (living) ["Equipment"]
 
-Number:Temperature ThermometerLiving_temperatureliving "Temperature" <temperature> (thermometer_living) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_living:temperature_living"}
-Number ThermometerLiving_humidityliving "Humidity" (thermometer_living) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_living:humidity_living"}
-Number ThermometerLiving_pressureliving "Pressure" (thermometer_living) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_living:pressure_living"}
-Number ThermometerLiving_linkqualityliving "Link Quality" (thermometer_living) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_living:linkquality_living"}
-Number ThermometerLiving_batteryliving "Battery" (thermometer_living) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_living:battery_living"}
+Number:Temperature ThermometerLiving_temperatureliving "Temperature [%.f ˚C]" <temperature> (min_temperature, thermometer_living) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_living:temperature_living"}
+Number ThermometerLiving_humidityliving "Humidity [%.0f]" <humidity> (thermometer_living) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_living:humidity_living"}
+Number ThermometerLiving_pressureliving "Pressure [%.0f hPa]" <pressure> (thermometer_living) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_living:pressure_living"}
+Number ThermometerLiving_linkqualityliving "Link Quality" <qualityofservice> (thermometer_living) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_living:linkquality_living"}
+Number ThermometerLiving_batteryliving "Battery" <battery> (thermometer_living) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:thermometer_living:battery_living"}
+Number ThermometerLiving_voltageliving "Battery" <voltage> (thermometer_living) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_living:voltage_living"}

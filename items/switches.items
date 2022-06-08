@@ -3,10 +3,10 @@ Group switch_couch "Switch Couch" (living) ["WallSwitch"]
 Group switch_living "Switch Living" (living) ["WallSwitch"]
 
 
-Switch SwitchBedroom_SwitchBedroom "Switch Bedroom" <switch> (switch_bedroom) ["Switch"] { channel = "mqtt:topic:a188c31189:switch_bedroom:switch_bedroom"}
+Switch SwitchBedroom_SwitchBedroom "Switch Bedroom" <lightbulb> (switch_bedroom) ["Switch", "Light"] { channel = "mqtt:topic:a188c31189:switch_bedroom:switch_bedroom"}
 Number SwitchBedroom_Linkquality "Linkquality" <qualityofservice> (switch_bedroom) ["Point"] {channel = "mqtt:topic:a188c31189:switch_bedroom:linkquality"}
 
-Switch SwitchLiving_SwitchLiving "Switch Couch" <switch> (switch_couch) ["Switch"] { channel = "mqtt:topic:switch_living:switch_living"}
+Switch SwitchLiving_SwitchLiving "Switch Couch" <lightbulb> (switch_couch) ["Switch"] { channel = "mqtt:topic:switch_living:switch_living"}
 Number SwitchLiving_Linkquality "Linkquality" <qualityofservice> (switch_couch) ["Point"] {channel = "mqtt:topic:switch_living:linkquality"}
 
 Switch SwitchLiving2_SwitchLiving "Switch Living" <lightbulb> (switch_living) ["Switch", "Light"] { channel = "mqtt:topic:a188c31189:switch_living2:switch_living2"}

@@ -29,6 +29,7 @@ Thing mqtt:topic:a188c31189:thermometer_bedroom "Thermometer Bedroom" (mqtt:brok
         Type number : pressure_bedroom "Pressure" [stateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.pressure"]
         Type number : linkquality_bedroom "Link Quality" [stateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.linkquality"]
         Type number : battery_bedroom "Battery" [stateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.battery"]
+        Type number : voltage_bedroom "Voltage" [stateTopic = "zigbee2mqtt/thermometer_bedroom", transformationPattern = "JSONPATH:$.voltage"]
 }
 
 Thing mqtt:topic:a188c31189:thermometer_childroom "Thermometer Childroom" (mqtt:broker:a188c31189) {
@@ -38,6 +39,7 @@ Thing mqtt:topic:a188c31189:thermometer_childroom "Thermometer Childroom" (mqtt:
         Type number : pressure_childroom "Pressure" [stateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.pressure"]
         Type number : linkquality_childroom "Link Quality" [stateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.linkquality"]
         Type number : battery_childroom "Battery" [stateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.battery"]
+        Type number : voltage_childroom "Voltage" [stateTopic = "zigbee2mqtt/thermometer_childroom", transformationPattern = "JSONPATH:$.voltage"]
 }
 
 Thing mqtt:topic:a188c31189:thermometer_living "Thermometer Living" (mqtt:broker:a188c31189) {
@@ -47,6 +49,7 @@ Thing mqtt:topic:a188c31189:thermometer_living "Thermometer Living" (mqtt:broker
         Type number : pressure_living "Pressure" [stateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.pressure"]
         Type number : linkquality_living "Link Quality" [stateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.linkquality"]
         Type number : battery_living "Battery" [stateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.battery"]
+        Type number : voltage_living "Voltage" [stateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.voltage"]
 }
 
 Thing mqtt:topic:a188c31189:door_senzor1 "Window Sensor" (mqtt:broker:a188c31189) {
@@ -133,3 +136,5 @@ Thing miio:vacuum:8381e35a0e "Roborock" [
     timeout = 15000,
     token = "79316672335964766a47344367393646"
 ]
+
+Thing hpprinter:printer:HP_Printer "HP Printer" [ipAddress = "192.168.100.137", statusInterval = 4, usageInterval = 30]

@@ -1,10 +1,10 @@
-Group air_pollution "Air Pollution" (garden) ["Equipment"]
+Group air_pollution "Air Pollution" <airpollution> (garden) ["Equipment"]
 
-DateTime observation_time "Observation Time" <time> (air_pollution) ["Point", "Timestamp"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#time-stamp"}
+DateTime observation_time "Observation Time" <time> (air_pollution) ["Point"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#time-stamp"}
 Number air_quality "Air Quality" (air_pollution) ["Point"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#airQualityIndex"}
 Number:Density pm25 "PM 2.5" (air_pollution) ["Point"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#particulateMatter2dot5"}
 Number:Density pm10 "PM 10" (air_pollution) ["Point"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#particulateMatter10"}
-Number:Density carbone_monoxide "Carbone Monoxide" (air_pollution) ["Point", "CO"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#carbonMonoxide"}
+Number:Density carbone_monoxide "Carbone Monoxide" (air_pollution) ["Point"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#carbonMonoxide"}
 Number:Density nitrogen_monoxide "Nitrogen Monoxide" (air_pollution) ["Point"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#nitrogenMonoxide"}
 Number:Density nitrogen_dioxide "Nitrogen Dioxide" (air_pollution) ["Point"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#nitrogenDioxide"}
 Number:Density sulphur_dioxide "Sulphur Dioxide" (air_pollution) ["Point"] {channel = "openweathermap:air-pollution:1be22a6f73:local:current#sulphurDioxide"}

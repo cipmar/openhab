@@ -1,12 +1,12 @@
 Group tablet_plug "Tablet Plug" (corridor) ["Equipment"]
 
 Switch PlugFront_OutputSwitch "Power" <switch> (tablet_plug) ["Switch"] { channel = "tapocontrol:P100:5cd79ad614:actuator#output"}
-Number PlugFront_SignalStrength "Signal" (tablet_plug) ["Point"] { channel = "tapocontrol:P100:5cd79ad614:device#wifiSignal"}
+Number PlugFront_SignalStrength "Signal" <network> (tablet_plug) ["Point"] { channel = "tapocontrol:P100:5cd79ad614:device#wifiSignal"}
 
 Group daikin_plug "daikin Plug" (living) ["Equipment"]
 
 Number PlugKitchen_Power "Power" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:power"}
 Number PlugKitchen_Energy "Energy" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:energy"}
 Number PlugKitchen_Temperature "Temperature" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:temperature"}
-Number PlugKitchen_Linkquality "Linkquality" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:linkquality"}
-Switch PlugKitchen_Switch "Linkquality" (daikin_plug) ["Switch"] {channel = "mqtt:topic:plug_kitchen:switch"}
+Number PlugKitchen_Linkquality "Linkquality" <network> (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:linkquality"}
+Switch PlugKitchen_Switch "Switch" <switch> (daikin_plug) ["Switch"] {channel = "mqtt:topic:plug_kitchen:switch"}

@@ -1,12 +1,12 @@
-Group irrigation "Irrigation" (garden) ["Equipment"]
+Group irrigation "Irrigation" <sprinkler> (garden) ["Equipment"]
 
 Switch zones_start_all "Start All" <switch> (irrigation) ["Switch"]
 
 // zones
-Group zone1 "Zone 1" (irrigation) ["Equipment"]
-Group zone23 "Zone 2+3" (irrigation) ["Equipment"]
-Group zone4 "Zone 4" (irrigation) ["Equipment"]
-Group zone5 "Zone 5" (irrigation) ["Equipment"]
+Group zone1 "Zone 1" <area> (irrigation) ["Equipment"]
+Group zone23 "Zone 2+3" <area> (irrigation) ["Equipment"]
+Group zone4 "Zone 4" <area> (irrigation) ["Equipment"]
+Group zone5 "Zone 5" <area> (irrigation) ["Equipment"]
 
 // run times
 Number:Time zone_1_run_time "Run Time" <time> (zone1) ["Point"] {

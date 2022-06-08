@@ -1,10 +1,10 @@
-Group weather_station "Weather Station" (garden) ["Equipment"]
+Group weather_station "Weather Station" <sun_clouds> (garden) ["Equipment"]
 
 // Open Weather Map
-Number:Temperature      Weather_OWM_Temperature     "Temperature [%.1f]"                                    (weather_station) ["Measurement", "Temperature"]    {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#temperature"}
-Number                  Weather_OWM_Humidity        "Humidity [%d]"                                         (weather_station) ["Measurement", "Humidity"]       {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#humidity"}
-Number:Pressure         Weather_OWM_Pressure        "Pressure [%d %unit%]"                                  (weather_station) ["Measurement", "Pressure"]       {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#pressure"}
-Number:Speed            Weather_OWM_Wind_Speed      "Windspeed [%.1f m/s]"                                  (weather_station) ["Point"]                         {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#wind-speed"}
+Number:Temperature      Weather_OWM_Temperature     "Temperature [%.1f ˚C]"                                <temperature> (weather_station) ["Measurement", "Temperature"]    {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#temperature"}
+Number                  Weather_OWM_Humidity        "Humidity [%d]"                                        <humidity> (weather_station) ["Measurement", "Humidity"]       {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#humidity"}
+Number:Pressure         Weather_OWM_Pressure        "Pressure [%d %unit%]"                                 <pressure> (weather_station) ["Measurement", "Pressure"]       {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#pressure"}
+Number:Speed            Weather_OWM_Wind_Speed      "Windspeed [%.1f m/s]"                                 <wind> (weather_station) ["Point"]                         {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#wind-speed"}
 String                  Weather_OWM_Station_Name    "Station Name [%s]"                                     (weather_station) ["Point"]                         {channel="openweathermap:weather-and-forecast:1be22a6f73:local:station#name"}
 DateTime                Weather_OWM_ObservationTime "Observation time [%1$tY-%1$tm-%1$td]"                  (weather_station) ["Point"]                         {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#time-stamp"}
 String                  Weather_OWM_Condition       "Condition [%s]"                                        (weather_station) ["Point"]                         {channel="openweathermap:weather-and-forecast:1be22a6f73:local:current#condition"}
