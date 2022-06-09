@@ -1,0 +1,26 @@
+rule "heating - turn on/off"
+when
+    Time cron "0 0/1 * * * ? *"
+then
+    var current_temperature = (min_temperature.state as Number).floatValue
+    var current_thermostat_setpoint = (thermostat_setpoint.state as Number).floatValue
+    var previous_thermostat_state = HeatingRelay_Switch.state
+
+    if (current_temperature < current_thermostat_setpoint) {
+        HeatingRelay_Switch.sendCommand(ON)
+
+        if (previous_thermostat_state == OFF) {
+            logInfo("heating", "Heating was turned ON, set point: {}, temperature: {}", current_thermostat_setpoint, current_temperature)
+            thermostat_last_start.postUpdate(new DateTimeType(now))
+        }
+
+        thermostat_last_stop.postUpdate(new DateTimeType(now))
+    } else {
+        HeatingRelay_Switch.sendCommand(OFF)
+
+        if (previous_thermostat_state == ON) {
+            logInfo("heating", "Heating was turned OFF, set point: {}, temperature: {}", current_thermostat_setpoint, current_temperature)
+            thermostat_last_stop.postUpdate(new DateTimeType(now))
+        }
+    }
+end

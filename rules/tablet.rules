@@ -1,0 +1,12 @@
+rule "tapo plug - turn on/off when tablet battery empty/full"
+when
+    Item TabletStatus_Battery received update
+then
+    if (newState == 100) {
+        PlugFront_OutputSwitch.sendCommand(OFF)
+    }
+
+    if (newState <= 25) {
+        PlugFront_OutputSwitch.sendCommand(ON)
+    }
+end

@@ -8,11 +8,11 @@ then
 
     if (temperature > setPoint && state == OFF) {
         DaikinACUnit_Power.sendCommand(ON)
-        logInfo("cooling", "Daikin AC was turned ON, setPoint: {}, temperature: {}", setPoint, temperature)
+        logInfo("cooling", "Daikin AC was turned ON, set point: {}, temperature: {}", setPoint, temperature)
     }
 
     if (temperature < setPoint - 1 && state == ON) {
         DaikinACUnit_Power.sendCommand(OFF)
-        logInfo("cooling", "Daikin AC was turned OFF, setPoint: {}, temperature: {}", setPoint, temperature)
+        logInfo("cooling", "Daikin AC was turned OFF, set point: {}, temperature: {}", setPoint, temperature)
     }
 end
