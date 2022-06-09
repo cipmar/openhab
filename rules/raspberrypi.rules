@@ -1,0 +1,73 @@
+var Number lastCpuAlertTimestamp = 0
+var Number lastDiskAlertTimestamp = 0
+var Number lastMemoryAlertTimestamp = 0
+
+rule "pi - high cpu temperature "
+when
+    Item MQTTThing_MQTTCPUTemperature received update
+then
+    if (newState > 60) {
+        var sendNotification = false;
+        var currentTimestamp = now.toInstant.toEpochMilli
+
+        if (currentTimestamp - lastCpuAlertTimestamp > 60 * 10 * 1000) { // 10 minute
+            lastCpuAlertTimestamp = currentTimestamp;
+            sendNotification = true;
+        }
+
+        var message = "Rapsberry PI high CPU temperature! Current CPU temperature is: " + newState.toString;
+        logWarn("raspberrypi", message)
+
+        if (sendNotification) {
+            sendNotification("marius.ropotica@gmail.com", message);
+            logWarn("raspberrypi", "Notification sent")
+        }
+    }
+end
+
+rule "pi - low disk space"
+when
+    Item MQTTThing_MQTTFreeDisk received update
+then
+    if (newState < 5) {
+        var sendNotification = false;
+        var currentTimestamp = now.toInstant.toEpochMilli
+
+        if (currentTimestamp - lastDiskAlertTimestamp > 60 * 60 * 1000) { // 60 minute
+            lastDiskAlertTimestamp = currentTimestamp;
+            sendNotification = true;
+        }
+
+        var message = "Rapsberry PI is low on disk space! Current free disk space is: " + newState.toString + " GB"
+        
+        logWarn("raspberrypi", message)
+
+        if (sendNotification) {
+            sendNotification("marius.ropotica@gmail.com", message);
+            logWarn("raspberrypi", "Notification sent")
+        }
+    }
+end
+
+rule "pi - low memory"
+when
+    Item MQTTThing_MQTTFreeMemory received update
+then
+    if (newState < 1) {
+        var sendNotification = false;
+        var currentTimestamp = now.toInstant.toEpochMilli
+
+        if (currentTimestamp - lastMemoryAlertTimestamp > 60 * 60 * 1000) { // 60 minute
+            lastMemoryAlertTimestamp = currentTimestamp;
+            sendNotification = true;
+        }
+        var message = "Rapsberry PI is low on memory! Current free memory: " + newState.toString + " GB"
+        
+        logWarn("raspberrypi", message)
+
+        if (sendNotification) {
+            sendNotification("marius.ropotica@gmail.com", message);
+            logWarn("raspberrypi", "Notification sent")
+        }
+    }
+end

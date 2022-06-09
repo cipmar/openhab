@@ -1,0 +1,21 @@
+rule "kitchen lights - button - turn on / off"
+when
+    Item Button1_Action received update "single"
+then
+    PhilipsLightstrip_State.sendCommand(ON)
+end
+
+// rule "kitchen lights - button - brightness up"
+// when
+//     Item Button1_Action received update "hold"
+// then
+//     var brightness = (PhilipsLightstrip_brightness.state as Number).intValue;
+//     var state = Button1_Action.state;    
+
+//     while (state != null && state.toString == "hold") {
+//         brightness = ((brightness + 5) % 100);
+//         PhilipsLightstrip_brightness.sendCommand(brightness);
+//         java.lang.Thread.sleep(200);
+//         state = Button1_Action.stat;
+//     }
+// end
