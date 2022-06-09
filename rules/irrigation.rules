@@ -92,6 +92,13 @@ then
     ])
 end
 
+rule "irrigation - start all cron"
+when
+    Time cron "0 0 4 1/3 * ? *"
+then
+    zones_start_all.sendCommand(ON)
+end
+
 rule "irrigation - stop all"
 when
     Item zones_start_all received command OFF
