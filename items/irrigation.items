@@ -1,6 +1,8 @@
 Group irrigation "Irrigation" <sprinkler> (garden) ["Equipment"]
 
 Switch zones_start_all "Start All" <switch> (irrigation) ["Switch"]
+Switch irrigation_system_enabled "Enabled" <switch> (irrigation) ["Switch"]
+
 
 // zones
 Group zone1 "Zone 1" <area> (irrigation) ["Equipment"]
@@ -10,16 +12,16 @@ Group zone5 "Zone 5" <area> (irrigation) ["Equipment"]
 
 // run times
 Number:Time zone_1_run_time "Run Time" <time> (zone1) ["Point"] {
-    stateDescription=""[min="0", max="60", step="1", options="1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=10,12=12,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]
+    stateDescription=""[min="0", max="60", step="1", options="0=0,1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=10,12=12,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]
 }
 Number:Time zone_2_3_run_time "Run Time" <time> (zone23) ["Point"] {
-    stateDescription=""[min="0", max="60", step="1", options="1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=10,12=12,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]
+    stateDescription=""[min="0", max="60", step="1", options="0=0,1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=10,12=12,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]
 }
 Number:Time zone_4_run_time "Run Time" <time> (zone4) ["Point"] {
-    stateDescription=""[min="0", max="60", step="1", options="1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=10,12=12,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]
+    stateDescription=""[min="0", max="60", step="1", options="0=0,1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=10,12=12,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]
 }
 Number:Time zone_5_run_time "Run Time" <time> (zone5) ["Point"] {
-    stateDescription=""[min="0", max="60", step="1", options="1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=10,12=12,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]
+    stateDescription=""[min="0", max="60", step="1", options="0=0,1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=10,12=12,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]
 }
 
 // start times
@@ -28,11 +30,11 @@ Number:Time zone_2_3_start_time "Start Time" <time> (zone23) ["Point"]
 Number:Time zone_4_start_time "Start Time" <time> (zone4) ["Point"]
 Number:Time zone_5_start_time "Start Time" <time> (zone5) ["Point"]
 
-// switches
-Switch zone_1_switch "Zone 1" <switch> (zone1) ["Switch"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:switch0"}
-Switch zone_2_3_switch "Zone 2+3" <switch> (zone23) ["Switch"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:switch1"}
-Switch zone_4_switch "Zone 4"<switch> (zone4) ["Switch"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:switch2"}
-Switch zone_5_switch "Zone 5" <switch> (zone5) ["Switch"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:switch3"}
+// switches"
+Switch zone_1_switch "Zone 1" <switch> (zone1) ["Switch"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:switch0", ga="Sprinkler"}
+Switch zone_2_3_switch "Zone 2+3" <switch> (zone23) ["Switch"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:switch1", ga="Sprinkler"}
+Switch zone_4_switch "Zone 4"<switch> (zone4) ["Switch"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:switch2", ga="Sprinkler"}
+Switch zone_5_switch "Zone 5" <switch> (zone5) ["Switch"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:switch3", ga="Sprinkler"}
 
 // other items
 String sonoff_lan_connected "LAN Connected" (irrigation) ["Point"] {channel="sonoff:4:6cfc5a5eaa:10013b65a1:localOnline"}

@@ -50,10 +50,14 @@ then
         }  
     ]
 
-    startStopZone.apply(zone_1_switch, zone_1_start_time,   zone_1_run_time);
-    startStopZone.apply(zone_2_3_switch, zone_2_3_start_time, zone_2_3_run_time);
-    startStopZone.apply(zone_4_switch, zone_4_start_time,   zone_4_run_time);
-    startStopZone.apply(zone_5_switch, zone_5_start_time,   zone_5_run_time);
+    if (irrigation_system_enabled.state == OFF) {
+        zones_start_all.sendCommand(OFF)
+    } else {
+        startStopZone.apply(zone_1_switch, zone_1_start_time, zone_1_run_time);
+        startStopZone.apply(zone_2_3_switch, zone_2_3_start_time, zone_2_3_run_time);
+        startStopZone.apply(zone_4_switch, zone_4_start_time, zone_4_run_time);
+        startStopZone.apply(zone_5_switch, zone_5_start_time, zone_5_run_time);
+    }
 end
 
 rule "irrigation - start all"
@@ -96,15 +100,17 @@ rule "irrigation - start all cron"
 when
     Time cron "0 0 4 1/3 * ? *"
 then
-    zones_start_all.sendCommand(ON)
+    if (irrigation_system_enabled.state == OFF) {
+        logInfo("irrigation", "Iriggation system is disabled, starting irrigation cancelled")
+    } else {
+        zones_start_all.sendCommand(ON)
+    }
 end
 
 rule "irrigation - stop all"
 when
     Item zones_start_all received command OFF
 then
-    logInfo("irrigation", "all zones turned off")
-    
     zone_1_switch.sendCommand(OFF)
     zone_2_3_switch.sendCommand(OFF)
     zone_4_switch.sendCommand(OFF)
