@@ -1,3 +1,5 @@
+var Number lastOfflineAlarm = 0
+
 rule "irrigation - auto stop"
 when
     Time cron "0/10 * * * * ? *"
@@ -64,6 +66,11 @@ rule "irrigation - start all"
 when
     Item zones_start_all received command ON
 then
+    if (irrigation_system_enabled.state == OFF) {
+        zones_start_all.postUpdate(OFF)
+        return
+    }
+    
     logInfo("irrigation", "all zones started")
 
     var run1 = (zone_1_run_time.state as Number).intValue
@@ -116,3 +123,24 @@ then
     zone_4_switch.sendCommand(OFF)
     zone_5_switch.sendCommand(OFF)
 end
+
+// rule "irrigation - notification when system offline"
+// when
+//     Thing "sonoff:4:6cfc5a5eaa:10013b65a1" received update OFFLINE
+// then
+//     var sendNotification = false
+//     var currentTimestamp = now.toInstant.toEpochMilli
+
+//     if (currentTimestamp - lastOfflineAlarm > 60 * 10 * 1000) { // 10 minute
+//         lastOfflineAlarm = currentTimestamp;
+//         sendNotification = true;
+//     }
+
+//     var message = "Sonoff 4CH Pro is offline"
+//     logWarn("irrigation", message)
+
+//     if (sendNotification) {
+//         sendNotification("marius.ropotica@gmail.com", message);
+//         logWarn("irrigation", "Notification sent")
+//     }
+// end
