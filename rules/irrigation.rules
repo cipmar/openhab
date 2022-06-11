@@ -4,61 +4,66 @@ rule "irrigation - auto stop"
 when
     Time cron "0/10 * * * * ? *"
 then
-    val startStopZone = [ GenericItem item_zone, GenericItem item_zone_start_time, GenericItem item_zone_run_time |
+    val handleOnState = [ GenericItem item_zone, GenericItem item_zone_start_time, GenericItem item_zone_run_time |
 
-        val start_time = if (item_zone_start_time.state == NULL) 0 else item_zone_start_time.state as Number;
-        val state = item_zone.state;
+        val start_time = if (item_zone_start_time.state == NULL) 0 else item_zone_start_time.state as Number
         val run_time = item_zone_run_time.state as Number
 
-        if (state == ON) {
+        if (start_time == 0) { // zone is running, setting the start time
 
-            if (start_time == 0) {
+            val start_timestamp = now.toInstant.toEpochMilli
+            item_zone_start_time.postUpdate(start_timestamp)
+            logInfo(item_zone.label, "{} has started, run time: {} min", item_zone.label, run_time.toString)
 
-                // zone is running, setting the start time
+        } else { // zone in running, start time already set
 
-                val start_timestamp = now.toInstant.toEpochMilli
-                item_zone_start_time.postUpdate(start_timestamp);
-                logInfo(item_zone.label, "{} has started, run time: {} min", item_zone.label, run_time.toString);
-            } 
+            val stop_timestamp = start_time + run_time * 60 * 1000
 
-            if (start_time > 0) {
+            if (now.toInstant.toEpochMilli >= stop_timestamp) { // zone should be stopped
 
-                // zone in running, start time is set
-
-                val stop_timestamp = start_time + run_time * 60 * 1000;
-
-                if (now.toInstant.toEpochMilli >= stop_timestamp) {
-
-                    // zone should be stopped
-
-                    item_zone.sendCommand(OFF);
-                    item_zone_start_time.postUpdate(0);
-                    logInfo(item_zone.label, "{} turned off", item_zone.label);
-                } else {
-                    val diff = (stop_timestamp - now.toInstant.toEpochMilli) / 1000 / 60;
-                    logInfo(item_zone.label, "{} is still running, remaining time: {} min", item_zone.label, diff.toString);
-                }
+                item_zone.sendCommand(OFF)
+                item_zone_start_time.postUpdate(0)
+                logInfo(item_zone.label, "{} turned off", item_zone.label)
+            } else {
+                
+                val diff = (stop_timestamp - now.toInstant.toEpochMilli) / 1000 / 60
+                logInfo(item_zone.label, "{} is still running, remaining time: {} min", item_zone.label, diff.toString)
             }
         }
-
-        if (state == OFF) {
-
-            // zone is turned off
-
-            if (start_time > 0) {
-                item_zone_start_time.postUpdate(0);
-                logInfo(item_zone.label, "{} was stopped, set start time to 0", item_zone.label);
-            }
-        }  
     ]
+
+    val handleOffState = [ GenericItem item_zone, GenericItem item_zone_start_time |
+
+        val start_time = if (item_zone_start_time.state == NULL) 0 else item_zone_start_time.state as Number
+
+        // zone is turned off
+
+        if (start_time > 0) {
+            item_zone_start_time.postUpdate(0)
+            logInfo(item_zone.label, "{} was stopped, set start time to 0", item_zone.label)
+        }
+    ]
+
+    val startStopZone = [ GenericItem item_zone, GenericItem item_zone_start_time, GenericItem item_zone_run_time |
+
+        if (item_zone.state == ON) {
+            handleOnState.apply(item_zone, item_zone_start_time, item_zone_run_time)
+        }
+
+        if (item_zone.state == OFF) {
+            handleOffState.apply(item_zone, item_zone_start_time)
+        }
+    ]
+
+    // entry point
 
     if (irrigation_system_enabled.state == OFF) {
         zones_start_all.sendCommand(OFF)
     } else {
-        startStopZone.apply(zone_1_switch, zone_1_start_time, zone_1_run_time);
-        startStopZone.apply(zone_2_3_switch, zone_2_3_start_time, zone_2_3_run_time);
-        startStopZone.apply(zone_4_switch, zone_4_start_time, zone_4_run_time);
-        startStopZone.apply(zone_5_switch, zone_5_start_time, zone_5_run_time);
+        startStopZone.apply(zone_1_switch, zone_1_start_time, zone_1_run_time)
+        startStopZone.apply(zone_2_3_switch, zone_2_3_start_time, zone_2_3_run_time)
+        startStopZone.apply(zone_4_switch, zone_4_start_time, zone_4_run_time)
+        startStopZone.apply(zone_5_switch, zone_5_start_time, zone_5_run_time)
     }
 end
 
