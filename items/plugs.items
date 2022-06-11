@@ -3,7 +3,7 @@ Group tablet_plug "Tablet Plug" (corridor) ["Equipment"]
 Switch PlugFront_OutputSwitch "Tablet Plug" <switch> (tablet_plug) ["Switch"] { channel = "tapocontrol:P100:5cd79ad614:actuator#output", ga = "Outlet"}
 Number PlugFront_SignalStrength "Signal" <network> (tablet_plug) ["Point"] { channel = "tapocontrol:P100:5cd79ad614:device#wifiSignal"}
 
-Group daikin_plug "daikin Plug" (living) ["Equipment"]
+Group daikin_plug "Daikin Plug" (living) ["Equipment"]
 
 Number PlugKitchen_Power "Power" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:power"}
 Number PlugKitchen_Energy "Energy" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:energy"}
