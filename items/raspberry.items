@@ -3,3 +3,8 @@ Group raspberry "Raspberry" <raspberrypi> (corridor) ["Equipment"]
 Number:Temperature MQTTThing_MQTTCPUTemperature "Temperature [%.f ˚C]" <temperature> (raspberry) ["Point"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_cpu_temperature"}
 Number MQTTThing_MQTTFreeMemory "Free Memory [%.2f GB]" <rammemory> (raspberry) ["Point"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_free_memory"}
 Number MQTTThing_MQTTFreeDisk "Free Disk [%.2f GB]" <harddisk> (raspberry) ["Point"] {channel = "mqtt:topic:a188c31189:78021203b0:mqtt_free_disk"}
+
+String LogReader_LastWarningEvent "Log Last Warn" <error> (raspberry) ["Point"] {channel = "logreader:reader:fc2ea0e633:lastWarningEvent"}
+String LogReader_LastErrorEvent "Log Last Error" <error> (raspberry) ["Point"] {channel = "logreader:reader:fc2ea0e633:lastErrorEvent"}
+Number LogReader_WarningEvents "Log Warn Events" <error> (raspberry) ["Point"] {channel = "logreader:reader:fc2ea0e633:warningEvents"}
+Number LogReader_ErrorEvents "Log Error Events" <error> (raspberry) ["Point"] {channel = "logreader:reader:fc2ea0e633:errorEvents"}

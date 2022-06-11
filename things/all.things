@@ -138,3 +138,5 @@ Thing miio:vacuum:8381e35a0e "Roborock" [
 ]
 
 Thing hpprinter:printer:HP_Printer "HP Printer" [ipAddress = "192.168.100.137", statusInterval = 4, usageInterval = 30]
+
+Thing logreader:reader:fc2ea0e633 "Log Reader" [refreshRate = 1000, warningPatterns = "WARN+", errorPatterns = "ERROR+", filePath = "${OPENHAB_LOGDIR}/openhab.log", warningBlacklistingPatterns = "transformation failed"]
