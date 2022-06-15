@@ -1,8 +1,8 @@
-Group livingtv "Living TV" (living) ["Equipment"]
+Group livingtv "Living TV" <screen> (living) ["Television"]
 
 Player LivingTV_Player "Player" <mediacontrol> (livingtv) ["Control"] {channel = "chromecast:chromecast:0e155e762891af7384c7630078e01aaa:control"}
 Switch LivingTV_Power "Power" <switch> (livingtv) ["Control"] {channel = "chromecast:chromecast:0e155e762891af7384c7630078e01aaa:stop"}
-Dimmer LivingTV_Volume "Volume" <soundvoume> (livingtv) ["Control", "SoundVolume"] {channel = "chromecast:chromecast:0e155e762891af7384c7630078e01aaa:volume"}
-Switch LivingTV_Mute "Mute" <switch> (livingtv) ["Control", "SoundVolume"] {channel = "chromecast:chromecast:0e155e762891af7384c7630078e01aaa:mute", inverted="true"}
+Dimmer LivingTV_Volume "Volume" <soundvolume> (livingtv) ["Control", "SoundVolume"] {channel = "chromecast:chromecast:0e155e762891af7384c7630078e01aaa:volume"}
+Switch LivingTV_Mute "Mute" <soundvolume_mute> (livingtv) ["Control", "SoundVolume"] {channel = "chromecast:chromecast:0e155e762891af7384c7630078e01aaa:mute"}
 String LivingTV_Artist "Artist" (livingtv) ["Point"] {channel = "chromecast:chromecast:0e155e762891af7384c7630078e01aaa:artist"}
 String LivingTV_Title "Title" (livingtv) ["Point"] {channel = "chromecast:chromecast:0e155e762891af7384c7630078e01aaa:title"}

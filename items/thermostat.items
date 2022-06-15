@@ -1,6 +1,6 @@
-Group thermostat "Thermostat" (house) ["HVAC"]
+Group thermostat "Thermostat" <thermostat> (house) ["HVAC"]
 
 Switch HeatingRelay_Switch "Power" <switch> (thermostat) ["Switch"] {channel = "mqtt:topic:a188c31189:heating_salus:power"}
-DateTime thermostat_last_start "Last Start" (thermostat) ["Point"] {stateDescription=""[pattern="%1$tH:%1$tM"]}
-DateTime thermostat_last_stop "Last Stop" (thermostat) ["Point"] {stateDescription=""[pattern="%1$tH:%1$tM"]}
+DateTime thermostat_last_start "Last Start" <time> (thermostat) ["Point"] {stateDescription=""[pattern="%1$tH:%1$tM"]}
+DateTime thermostat_last_stop "Last Stop" <time> (thermostat) ["Point"] {stateDescription=""[pattern="%1$tH:%1$tM"]}
 Number:Temperature thermostat_setpoint "Set Point" <temperature> (thermostat) ["Setpoint", "Temperature"]

@@ -1,4 +1,4 @@
-Group window_bedroom "Window Bedroom" (bedroom) ["Window"]
+Group window_bedroom "Window Bedroom" <window> (bedroom) ["Window"]
 
 Contact WindowSensor_WindowOpenClose "Open close" <window> (window_bedroom) ["OpenState"] {channel = "mqtt:topic:a188c31189:door_senzor1:window_open_close"}
 Number WindowSensor_Battery "Battery" <battery> (window_bedroom) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:door_senzor1:battery"}

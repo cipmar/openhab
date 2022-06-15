@@ -63,7 +63,7 @@ Thing mqtt:topic:a188c31189:door_senzor1 "Window Sensor" (mqtt:broker:a188c31189
 
 Thing mqtt:topic:a188c31189:button1 "Button" (mqtt:broker:a188c31189) {
     Channels:
-        Type string : action "Action" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JSONPATH:$.action"]
+        Type string : action "Action" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JS:action.js"]
         Type number : battery "Battery" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JSONPATH:$.battery"]
         Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JSONPATH:$.linkquality"]
         Type number : voltage "Voltage" [stateTopic = "zigbee2mqtt/button1", transformationPattern = "JSONPATH:$.voltage"]

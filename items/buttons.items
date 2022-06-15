@@ -1,6 +1,6 @@
 Group button "Button" (kitchen) ["Equipment"]
 
-Contact Button1_Action "Action" (button) ["Point"] {channel = "mqtt:topic:a188c31189:button1:action"}
+String Button1_Action "Action" (button) ["Point"] {channel = "mqtt:topic:a188c31189:button1:action"}
 Number Button1_Battery "Battery" <battery> (button) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:button1:battery"}
 Number Button1_Linkquality "Linkquality" <qualityofservice> (button) ["Point"] {channel = "mqtt:topic:a188c31189:button1:linkquality"}
 Number Button1_Voltage "Voltage" <voltage> (button) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:button1:voltage"}

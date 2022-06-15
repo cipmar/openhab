@@ -5,8 +5,8 @@ Number PlugFront_SignalStrength "Signal" <network> (tablet_plug) ["Point"] { cha
 
 Group daikin_plug "Daikin Plug" (living) ["Equipment"]
 
-Number PlugKitchen_Power "Power" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:power"}
-Number PlugKitchen_Energy "Energy" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:energy"}
-Number PlugKitchen_Temperature "Temperature" (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:temperature"}
+Number PlugKitchen_Power "Power"  <energy> (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:power"}
+Number PlugKitchen_Energy "Energy" <energy> (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:energy"}
+Number PlugKitchen_Temperature "Temperature" <temperature> (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:temperature"}
 Number PlugKitchen_Linkquality "Linkquality" <network> (daikin_plug) ["Point"] {channel = "mqtt:topic:plug_kitchen:linkquality"}
 Switch PlugKitchen_Switch "AC Plug" <switch> (daikin_plug) ["Switch"] {channel = "mqtt:topic:plug_kitchen:switch", ga = "Outlet"}

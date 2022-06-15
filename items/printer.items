@@ -1,8 +1,8 @@
-Group printer "Printer" (office) ["Equipment"]
+Group printer "Printer" <printer> (office) ["Equipment"]
 
-Number Printer_CopyTotalPages "Copy Total Pages" (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:copy#totalCount"}
-Number Printer_UsageTotalPages "Printed Total Pages" (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:usage#totalCount"}
-String Printer_PrinterStatus "Printer Status" (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:status#status"}
-String Printer_ScannerStatus "Scanner Status" (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:status#scannerStatus"}
-Number Printer_PagesRemaining "Pages Remaining" (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:usage#blackPagesRemaining"}
+Number Printer_CopyTotalPages "Copy Total Pages" <page> (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:copy#totalCount"}
+Number Printer_UsageTotalPages "Printed Total Pages" <page> (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:usage#totalCount"}
+String Printer_PrinterStatus "Printer Status" <printer> (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:status#status"}
+String Printer_ScannerStatus "Scanner Status" <scanner> (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:status#scannerStatus"}
+Number Printer_PagesRemaining "Pages Remaining" <page> (printer) ["Point"] { channel = "hpprinter:printer:HP_Printer:usage#blackPagesRemaining"}
 

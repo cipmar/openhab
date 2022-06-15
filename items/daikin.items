@@ -1,9 +1,9 @@
-Group ac_unit "Daikin AC Unit" (living) ["HVAC"]
+Group ac_unit "Daikin AC Unit" <climate> (living) ["HVAC"]
 
 Switch DaikinACUnit_Power "Power" <switch> (ac_unit) ["Control"] {channel = "daikin:ac_unit:192_168_100_195:power"}
 Number:Temperature DaikinACUnit_SetPoint "Set Point [%.f ˚C]" <temperature> (ac_unit) ["Setpoint", "Temperature"] {channel = "daikin:ac_unit:192_168_100_195:settemp"}
 Number:Temperature DaikinACUnit_IndoorTemperature "Indoor Temperature [%.f ˚C]" <temperature> (ac_unit) ["Measurement"] {channel = "daikin:ac_unit:192_168_100_195:indoortemp"}
 Number:Temperature DaikinACUnit_OutdoorTemperature "Oudoor Temperature [%.f ˚C]" <temperature> (ac_unit) ["Measurement"] {channel = "daikin:ac_unit:192_168_100_195:outdoortemp"}
 String DaikinACUnit_Mode "Mode" (ac_unit) ["Point"] {channel = "daikin:ac_unit:192_168_100_195:mode"}
-String DaikinACUnit_Fan "Fan" (ac_unit) ["Point"] {channel = "daikin:ac_unit:192_168_100_195:fanspeed"}
-String DaikinACUnit_FanSwing "Fan Swing" (ac_unit) ["Point"] {channel = "daikin:ac_unit:192_168_100_195:fandir"}
+String DaikinACUnit_Fan "Fan" <fan> (ac_unit) ["Point"] {channel = "daikin:ac_unit:192_168_100_195:fanspeed"}
+String DaikinACUnit_FanSwing "Fan Swing" <fan> (ac_unit) ["Point"] {channel = "daikin:ac_unit:192_168_100_195:fandir"}

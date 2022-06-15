@@ -1,4 +1,4 @@
-Group thermometer_bedroom "Thermometer Bedroom" (bedroom) ["Equipment"]
+Group thermometer_bedroom "Thermometer Bedroom" <temperature> (bedroom) ["Equipment"]
 
 Group:Number:MIN min_temperature "Min Temperature [%.2f ˚C]" <temperature> (thermostat) ["Measurement", "Temperature"]
 
@@ -9,7 +9,7 @@ Number ThermometerBedroom_linkqualitybedroom "Link Quality" <qualityofservice> (
 Number ThermometerBedroom_batterybedroom "Battery" <battery> (thermometer_bedroom) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:battery_bedroom"}
 Number ThermometerBedroom_voltagebedroom "Voltage" <voltage> (thermometer_bedroom) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:voltage_bedroom"}
 
-Group thermometer_childroom "Thermometer Childroom" (childroom) ["Equipment"]
+Group thermometer_childroom "Thermometer Childroom" <temperature> (childroom) ["Equipment"]
 
 Number:Temperature ThermometerChildroom_temperaturechildroom "Temperature [%.f ˚C]" <temperature> (min_temperature, thermometer_childroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:temperature_childroom"}
 Number ThermometerChildroom_humiditychildroom "Humidity [%.0f]" <humidity> (thermometer_childroom) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:humidity_childroom"}
@@ -19,7 +19,7 @@ Number ThermometerChildroom_batterychildroom "Battery" <battery> (thermometer_ch
 Number ThermometerChildroom_voltagechildroom "Voltage" <voltage> (thermometer_childroom) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:voltage_childroom"}
 
 
-Group thermometer_living "Thermometer Living" (living) ["Equipment"]
+Group thermometer_living "Thermometer Living" <temperature> (living) ["Equipment"]
 
 Number:Temperature ThermometerLiving_temperatureliving "Temperature [%.f ˚C]" <temperature> (min_temperature, thermometer_living) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_living:temperature_living"}
 Number ThermometerLiving_humidityliving "Humidity [%.0f]" <humidity> (thermometer_living) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_living:humidity_living"}

@@ -1,6 +1,6 @@
-Group switch_bedroom "Switch Bedroom" (bedroom) ["WallSwitch"]
-Group switch_couch "Switch Couch" (living) ["WallSwitch"] 
-Group switch_living "Switch Living" (living) ["WallSwitch"]
+Group switch_bedroom "Switch Bedroom" <wallswitch> (bedroom) ["WallSwitch"]
+Group switch_couch "Switch Couch" <wallswitch> (living) ["WallSwitch"] 
+Group switch_living "Switch Living" <wallswitch> (living) ["WallSwitch"]
 
 
 Switch SwitchBedroom_SwitchBedroom "Switch Bedroom" <lightbulb> (switch_bedroom) ["Switch", "Light"] { channel = "mqtt:topic:a188c31189:switch_bedroom:switch_bedroom", ga = "Light"}

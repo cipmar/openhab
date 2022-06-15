@@ -1,22 +1,22 @@
-Group roborock "Roborock" (living) ["Equipment"]
+Group roborock "Roborock" <vacuum> (living) ["Equipment"]
 
 String XiaomiRobotVacuum_ControlVacuum "Control Vacuum" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:actions#control"}
 
 Number XiaomiRobotVacuum_ControlFanLevel "Control Fan Level" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:actions#fan"}
-Number XiaomiRobotVacuum_BatteryLevel "Battery Level" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#battery"}
-Number XiaomiRobotVacuum_Status_Clean_Area "Cleaning Area" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#clean_area"}
-Number XiaomiRobotVacuum_CleaningTime "Cleaning Time" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#clean_time"}
-String XiaomiRobotVacuum_ErrorCode "Error Code" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#error_code"}
-Number XiaomiRobotVacuum_ErrorID "Error ID" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#error_id"}
-Number XiaomiRobotVacuum_FanPower "Fan Power" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#fan_power"}
+Number XiaomiRobotVacuum_BatteryLevel "Battery Level [%d]" <battery> (roborock) ["Status", "Energy"] {channel = "miio:vacuum:8381e35a0e:status#battery"}
+Number:Area XiaomiRobotVacuum_Status_Clean_Area "Cleaning Area" <area> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#clean_area"}
+Number XiaomiRobotVacuum_CleaningTime "Cleaning Time" <time> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#clean_time"}
+String XiaomiRobotVacuum_ErrorCode "Error Code" <error> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#error_code"}
+Number XiaomiRobotVacuum_ErrorID "Error ID" <error> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#error_id"}
+Number XiaomiRobotVacuum_FanPower "Fan Power" <fan> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#fan_power"}
 Switch XiaomiRobotVacuum_DoNotDisturb "Do Not Disturb" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#dnd_enabled"}
 String XiaomiRobotVacuum_State "State" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#state"}
 Number XiaomiRobotVacuum_StateID "State ID" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#state_id"}
-Switch XiaomiRobotVacuum_LockStatus "Lock Status" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#lock_status"}
-Switch XiaomiRobotVacuum_WaterBoxState "Water Box State" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#water_box_status"}
+Switch XiaomiRobotVacuum_LockStatus "Lock Status" <lock> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#lock_status"}
+Switch XiaomiRobotVacuum_WaterBoxState "Water Box State" <water> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:status#water_box_status"}
 
 Number XiaomiRobotVacuum_MainBrushRemaining "Main Brush Remaining" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:consumables#main_brush_percent"}
-Number XiaomiRobotVacuum_SideBrushRemaining "Side Brush Remaining" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:consumables#side_brush_percent"}
+Number XiaomiRobotVacuum_SideBrushRemaining "Side Brush Remaining" <sidebrush> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:consumables#side_brush_percent"}
 Number XiaomiRobotVacuum_FilterUsageRemaining "Filter Usage Remaining" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:consumables#filter_percent"}
 Number XiaomiRobotVacuum_SensorDirtRemaining "Sensor Dirt Remaining" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:consumables#sensor_dirt_percent"}
 String XiaomiRobotVacuum_ResetConsumable "Reset Consumable" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:consumables#consumable_reset"}
@@ -26,14 +26,14 @@ Switch XiaomiRobotVacuum_DoNotDisturbFunctionality "Do Not Disturb Functionality
 String XiaomiRobotVacuum_StartTimeDND "Start Time DND" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:dnd#dnd_start"}
 String XiaomiRobotVacuum_EndTimeDND "End Time DND" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:dnd#dnd_end"}
 
-Number:Area XiaomiRobotVacuum_TotalCleaningArea "Total Cleaning Area" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:history#total_clean_area"}
+Number:Area XiaomiRobotVacuum_TotalCleaningArea "Total Cleaning Area" <area> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:history#total_clean_area"}
 Number:Time XiaomiRobotVacuum_TotalCleaningTime "Total Cleaning Time" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:history#total_clean_time"}
 Number XiaomiRobotVacuum_TotalCleanings "Total Cleanings" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:history#total_clean_count"}
 
 
 DateTime XiaomiRobotVacuum_CleaningStart "Cleaning Start" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:cleaning#last_clean_start_time"}
 DateTime XiaomiRobotVacuum_CleaningEnd "Cleaning End" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:cleaning#last_clean_end_time"}
-Number:Area XiaomiRobotVacuum_Cleaning_Last_Clean_Area "Cleaning Area" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:cleaning#last_clean_area"}
+Number:Area XiaomiRobotVacuum_Cleaning_Last_Clean_Area "Cleaning Area" <area> (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:cleaning#last_clean_area"}
 Number:Time XiaomiRobotVacuum_CleaningDuration "Cleaning Duration" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:cleaning#last_clean_duration"}
 Number XiaomiRobotVacuum_Error "Error" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:cleaning#last_clean_error"}
 Number XiaomiRobotVacuum_CleaningFinished "Cleaning Finished" (roborock) ["Point"] {channel = "miio:vacuum:8381e35a0e:cleaning#last_clean_finish"}

@@ -110,7 +110,7 @@ end
 
 rule "irrigation - start all cron"
 when
-    Time cron "0 0 4 1/3 * ? *"
+    Time cron "0 0 4 ? * TUE,FRI *"
 then
     if (irrigation_system_enabled.state == OFF) {
         logInfo("irrigation", "Iriggation system is disabled, starting irrigation cancelled")
