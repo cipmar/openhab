@@ -107,7 +107,7 @@ Thing mqtt:topic:tablet_statue "Tablet Status" (mqtt:broker:a188c31189) {
         Type number : tablet_batteryTemperature "Battery Temperature" [stateTopic = "fully/deviceInfo/tablet", transformationPattern = "JSONPATH:$.batteryTemperature"]
 }
 
-Thing mqtt:topic:philips_lightstrip "Philips Lightstrip" (mqtt:broker:a188c31189) {
+Thing mqtt:topic:philips_lightstrip "Lightstrip - Philips" (mqtt:broker:a188c31189) {
     Channels:
         Type switch : state "State" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPattern = "JSONPATH:$.state", off = "OFF", on = "TOGGLE"]
         Type number : brightness "Brightness" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPatternOut = "JS:brightness.js", transformationPattern = "JSONPATH:$.brightness"]
@@ -143,3 +143,4 @@ Thing logreader:reader:fc2ea0e633 "Log Reader" [refreshRate = 1000, warningPatte
 
 Thing chromecast:chromecast:0e155e762891af7384c7630078e01aaa "Living TV" [ipAddress = "192.168.100.157", port= 8009, refreshRate = 5]
 
+Thing miio:basic:edb690e6a2 "Lightstrip - Xiaomi" [cloudServer = "de", refreshInterval = 30, host = "192.168.100.115", model = "yeelink.light.strip2", communication = "direct", deviceId = "313144772", timeout = 15000, token = "c2c9d2b9c07df8ccb31b598623e6ab81"]

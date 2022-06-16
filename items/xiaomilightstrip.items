@@ -1,0 +1,12 @@
+Group xiaomi_lightstrip "Xiaomi Lightstrip" (childroom) ["Equipment"] { ga = "Light"}
+
+Switch xiaomi_lightstrip_power "Power" <lightbulb> (xiaomi_lightstrip) ["Switch", "Light"] {channel = "miio:basic:edb690e6a2:power", ga = "lightPower"}
+Dimmer xiaomi_lightstrip_brightness "Brightness" (xiaomi_lightstrip) ["Switch"] { channel = "miio:basic:edb690e6a2:brightness", ga = "lightBrightness"}
+Color xiaomi_lightstrip_color "Color" <colorlight> (xiaomi_lightstrip) ["Point"] { channel = "miio:basic:edb690e6a2:rgbColor", ga = "lightColor"}
+Number:Time xiaomi_lightstrip_shutdown_timer "Shutdown Timer" <time> (xiaomi_lightstrip) ["Point"] { channel = "miio:basic:edb690e6a2:delayoff", 
+    stateDescription=""[min="0", max="60", step="1", options="0=0,1=1,2=2,3=3,4=4,5=5,10=10,15=15,20=20,25=25,30=30,35=35,40=40,45=45,50=50,55=55,60=60"]}
+Number xiaomi_lightstrip_color_temperature "Color Teperature" <colorlight> (xiaomi_lightstrip) ["Point"] { channel = "miio:basic:edb690e6a2:colorTemperature", 
+    stateDescription=""[options="2000=2000,2700=2700,3000=3000,5000=5000,6500=6500"]}
+Number:Time xiaomi_lightstrip_color_mode "Color Mode" <settings> (xiaomi_lightstrip) ["Point", "Control"] { channel = "miio:basic:edb690e6a2:colorMode"}
+Switch xiaomi_lightstrip_color_flow "Color Flow" <switch> (xiaomi_lightstrip) ["Switch"] {channel = "miio:basic:edb690e6a2:colorflow"}
+String xiaomi_lightstrip_name "Name" (xiaomi_lightstrip) ["Point"] {channel = "miio:basic:edb690e6a2:name"}
