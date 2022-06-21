@@ -53,7 +53,7 @@ rule "pi - low memory"
 when
     Item MQTTThing_MQTTFreeMemory received update
 then
-    if (newState < 1) {
+    if (newState < 0.5) {
         var sendNotification = false;
         var currentTimestamp = now.toInstant.toEpochMilli
 

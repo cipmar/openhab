@@ -27,3 +27,12 @@ Number ThermometerLiving_pressureliving "Pressure [%.0f hPa]" <pressure> (thermo
 Number ThermometerLiving_linkqualityliving "Link Quality" <qualityofservice> (thermometer_living) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_living:linkquality_living"}
 Number ThermometerLiving_batteryliving "Battery" <battery> (thermometer_living) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:thermometer_living:battery_living"}
 Number ThermometerLiving_voltageliving "Battery" <voltage> (thermometer_living) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_living:voltage_living"}
+
+Group thermometer_garden "Thermometer Garden" <temperature> (garden) ["Equipment"]
+
+Number:Temperature ThermometerGarden_temperaturegarden "Temperature [%.f ˚C]" <temperature> (thermometer_garden) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_garden:temperature_garden"}
+Number ThermometerGarden_humiditygarden "Humidity [%.0f]" <humidity> (thermometer_garden) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_garden:humidity_garden"}
+Number ThermometerGarden_pressuregarden "Pressure [%.0f hPa]" <pressure> (thermometer_garden) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_garden:pressure_garden"}
+Number ThermometerGarden_linkqualitygarden "Link Quality" <qualityofservice> (thermometer_garden) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_garden:linkquality_garden"}
+Number ThermometerGarden_batterygarden "Battery" <battery> (thermometer_garden) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:thermometer_garden:battery_garden"}
+Number ThermometerGarden_voltagegarden "Battery" <voltage> (thermometer_garden) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_garden:voltage_garden"}

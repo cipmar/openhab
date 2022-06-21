@@ -52,6 +52,16 @@ Thing mqtt:topic:a188c31189:thermometer_living "Thermometer Living" (mqtt:broker
         Type number : voltage_living "Voltage" [stateTopic = "zigbee2mqtt/thermometer_living", transformationPattern = "JSONPATH:$.voltage"]
 }
 
+Thing mqtt:topic:a188c31189:thermometer_garden "Thermometer Garden" (mqtt:broker:a188c31189) {
+    Channels:
+        Type number : temperature_garden "Temperature" [stateTopic = "zigbee2mqtt/thermometer_garden", transformationPattern = "JSONPATH:$.temperature"]
+        Type number : humidity_garden "Humidity" [stateTopic = "zigbee2mqtt/thermometer_garden", transformationPattern = "JSONPATH:$.humidity"]
+        Type number : pressure_garden "Pressure" [stateTopic = "zigbee2mqtt/thermometer_garden", transformationPattern = "JSONPATH:$.pressure"]
+        Type number : linkquality_garden "Link Quality" [stateTopic = "zigbee2mqtt/thermometer_garden", transformationPattern = "JSONPATH:$.linkquality"]
+        Type number : battery_garden "Battery" [stateTopic = "zigbee2mqtt/thermometer_garden", transformationPattern = "JSONPATH:$.battery"]
+        Type number : voltage_garden "Voltage" [stateTopic = "zigbee2mqtt/thermometer_garden", transformationPattern = "JSONPATH:$.voltage"]
+}
+
 Thing mqtt:topic:a188c31189:door_senzor1 "Window Sensor" (mqtt:broker:a188c31189) {
     Channels:
         Type contact : window_open_close "Window Open Close" [stateTopic = "zigbee2mqtt/door_senzor1", transformationPattern = "JSONPATH:$.contact", off = "true", on = "false"]
