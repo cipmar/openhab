@@ -1,8 +1,8 @@
 Group thermometer_bedroom "Thermometer Bedroom" <temperature> (bedroom) ["Equipment"]
 
-Group:Number:MIN min_temperature "Min Temperature [%.2f ˚C]" <temperature> (thermostat) ["Measurement", "Temperature"]
+Group:Number:MIN min_temperature "Temperature Min [%.2f ˚C]" <temperature> (thermostat) ["Measurement", "Temperature"]
 
-Number:Temperature ThermometerBedroom_temperaturebedroom "Temperature [%.f ˚C]" <temperature> (min_temperature, thermometer_bedroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:temperature_bedroom"}
+Number:Temperature ThermometerBedroom_temperaturebedroom "Temperature Bedroom [%.f ˚C]" <temperature> (min_temperature, thermometer_bedroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:temperature_bedroom"}
 Number ThermometerBedroom_humiditybedroom "Humidity [%.0f]" <humidity> (thermometer_bedroom) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:humidity_bedroom"}
 Number ThermometerBedroom_pressurebedroom "Pressure [%.0f hPa]" <pressure> (thermometer_bedroom) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:pressure_bedroom"}
 Number ThermometerBedroom_linkqualitybedroom "Link Quality" <qualityofservice> (thermometer_bedroom) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_bedroom:linkquality_bedroom"}
@@ -11,7 +11,7 @@ Number ThermometerBedroom_voltagebedroom "Voltage" <voltage> (thermometer_bedroo
 
 Group thermometer_childroom "Thermometer Childroom" <temperature> (childroom) ["Equipment"]
 
-Number:Temperature ThermometerChildroom_temperaturechildroom "Temperature [%.f ˚C]" <temperature> (min_temperature, thermometer_childroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:temperature_childroom"}
+Number:Temperature ThermometerChildroom_temperaturechildroom "Temperature Childroom[%.f ˚C]" <temperature> (min_temperature, thermometer_childroom) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:temperature_childroom"}
 Number ThermometerChildroom_humiditychildroom "Humidity [%.0f]" <humidity> (thermometer_childroom) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:humidity_childroom"}
 Number ThermometerChildroom_pressurechildroom "Pressure [%.0f hPa]" <pressure> (thermometer_childroom) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:pressure_childroom"}
 Number ThermometerChildroom_linkqualitychildroom "Link Quality" <qualityofservice> (thermometer_childroom) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_childroom:linkquality_childroom"}
@@ -21,7 +21,7 @@ Number ThermometerChildroom_voltagechildroom "Voltage" <voltage> (thermometer_ch
 
 Group thermometer_living "Thermometer Living" <temperature> (living) ["Equipment"]
 
-Number:Temperature ThermometerLiving_temperatureliving "Temperature [%.f ˚C]" <temperature> (min_temperature, thermometer_living) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_living:temperature_living"}
+Number:Temperature ThermometerLiving_temperatureliving "Temperature Living [%.f ˚C]" <temperature> (min_temperature, thermometer_living) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_living:temperature_living"}
 Number ThermometerLiving_humidityliving "Humidity [%.0f]" <humidity> (thermometer_living) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_living:humidity_living"}
 Number ThermometerLiving_pressureliving "Pressure [%.0f hPa]" <pressure> (thermometer_living) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_living:pressure_living"}
 Number ThermometerLiving_linkqualityliving "Link Quality" <qualityofservice> (thermometer_living) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_living:linkquality_living"}
@@ -30,7 +30,7 @@ Number ThermometerLiving_voltageliving "Battery" <voltage> (thermometer_living) 
 
 Group thermometer_garden "Thermometer Garden" <temperature> (garden) ["Equipment"]
 
-Number:Temperature ThermometerGarden_temperaturegarden "Temperature [%.f ˚C]" <temperature> (thermometer_garden) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_garden:temperature_garden"}
+Number:Temperature ThermometerGarden_temperaturegarden "Temperature Garden [%.f ˚C]" <temperature> (thermometer_garden) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_garden:temperature_garden"}
 Number ThermometerGarden_humiditygarden "Humidity [%.0f]" <humidity> (thermometer_garden) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_garden:humidity_garden"}
 Number ThermometerGarden_pressuregarden "Pressure [%.0f hPa]" <pressure> (thermometer_garden) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_garden:pressure_garden"}
 Number ThermometerGarden_linkqualitygarden "Link Quality" <qualityofservice> (thermometer_garden) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_garden:linkquality_garden"}
