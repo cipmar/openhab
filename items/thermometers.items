@@ -36,3 +36,12 @@ Number ThermometerGarden_pressuregarden "Pressure [%.0f hPa]" <pressure> (thermo
 Number ThermometerGarden_linkqualitygarden "Link Quality" <qualityofservice> (thermometer_garden) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_garden:linkquality_garden"}
 Number ThermometerGarden_batterygarden "Battery" <battery> (thermometer_garden) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:thermometer_garden:battery_garden"}
 Number ThermometerGarden_voltagegarden "Battery" <voltage> (thermometer_garden) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_garden:voltage_garden"}
+
+Group thermometer_attic "Thermometer Attic" <temperature> (attic) ["Equipment"]
+
+Number:Temperature ThermometerAttic_temperatureattic "Temperature Attic [%.f ˚C]" <temperature> (thermometer_attic) ["Measurement", "Temperature"] {channel = "mqtt:topic:a188c31189:thermometer_attic:temperature_attic"}
+Number ThermometerAttic_humidityattic "Humidity [%.0f]" <humidity> (thermometer_attic) ["Measurement", "Humidity"] {channel = "mqtt:topic:a188c31189:thermometer_attic:humidity_attic"}
+Number ThermometerAttic_pressureattic "Pressure [%.0f hPa]" <pressure> (thermometer_attic) ["Measurement", "Pressure"] {channel = "mqtt:topic:a188c31189:thermometer_attic:pressure_attic"}
+Number ThermometerAttic_linkqualityattic "Link Quality" <qualityofservice> (thermometer_attic) ["Point"] {channel = "mqtt:topic:a188c31189:thermometer_attic:linkquality_attic"}
+Number ThermometerAttic_batteryattic "Battery" <battery> (thermometer_attic) ["Status", "Energy"] {channel = "mqtt:topic:a188c31189:thermometer_attic:battery_attic"}
+Number ThermometerAttic_voltageattic "Battery" <voltage> (thermometer_attic) ["Measurement", "Voltage"] {channel = "mqtt:topic:a188c31189:thermometer_attic:voltage_attic"}
