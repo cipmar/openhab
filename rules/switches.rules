@@ -1,0 +1,13 @@
+rule "couch switch - turn on"
+when
+    Time cron "0 00 20 ? * * *"
+then
+    SwitchLiving_SwitchLiving.sendCommand(ON)
+end
+
+rule "couch switch - turn off"
+when
+    Time cron "0 30 23 ? * * *"
+then
+    SwitchLiving_SwitchLiving.sendCommand(OFF)
+end
