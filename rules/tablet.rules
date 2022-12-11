@@ -3,10 +3,10 @@ when
     Item TabletStatus_Battery received update
 then
     if (newState == 100) {
-        PlugFront_OutputSwitch.sendCommand(OFF)
+        PlugKitchen_Switch.sendCommand(OFF)
     }
 
     if (newState <= 25) {
-        PlugFront_OutputSwitch.sendCommand(ON)
+        PlugKitchen_Switch.sendCommand(ON)
     }
 end

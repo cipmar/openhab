@@ -1,0 +1,15 @@
+rule "front plug - turn on"
+when
+    Time cron "0 0 17 ? * * *" or 
+    Time cron "0 0 6 ? * * *"
+then
+    PlugFront_OutputSwitch.sendCommand(ON)
+end
+
+rule "front plug - turn off"
+when
+    Time cron "0 30 23 ? * * *" or
+    Time cron "0 30 8 ? * * *"
+then
+    PlugFront_OutputSwitch.sendCommand(OFF)
+end

@@ -1,6 +1,0 @@
-rule "daikin plug - turn on every minute"
-when
-    Time cron "0 0/1 * * * ? *"
-then
-    PlugKitchen_Switch.sendCommand(ON)
-end

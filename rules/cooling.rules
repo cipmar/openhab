@@ -1,18 +1,82 @@
-rule "cooling - turn on/off"
+rule "daikin - cooling - turn on"
+when
+    Time cron "0 0/1 * * * ? *"
+then
+
+    var state = DaikinACUnit_Power.state
+    var mode = DaikinACUnit_Mode.state
+    var setPoint = DaikinACUnit_SetPoint.state as Number
+    var temperature = ThermometerLiving_temperatureliving.state as Number
+
+    if (mode.toString != "COLD") {
+        logInfo("cooling", "Not in cooling mode")
+        return
+    }
+
+    if (temperature > setPoint && state == OFF) {
+        DaikinACUnit_Power.sendCommand(ON)
+        logInfo("daikin", "Daikin AC was turned ON, mode: {}, set point: {}, temperature: {}", mode, setPoint, temperature)
+    }
+end
+
+
+rule "daikin - cooling - turn off"
 when
     Time cron "0 0/1 * * * ? *"
 then
     var state = DaikinACUnit_Power.state
+    var mode = DaikinACUnit_Mode.state
     var setPoint = DaikinACUnit_SetPoint.state as Number
     var temperature = ThermometerLiving_temperatureliving.state as Number
 
-    if (temperature > setPoint && state == OFF) {
-        DaikinACUnit_Power.sendCommand(ON)
-        logInfo("cooling", "Daikin AC was turned ON, set point: {}, temperature: {}", setPoint, temperature)
+    if (mode.toString != "COLD") {
+        logInfo("cooling", "Not in cooling mode")
+        return
     }
 
     if (temperature < setPoint - 1 && state == ON) {
         DaikinACUnit_Power.sendCommand(OFF)
-        logInfo("cooling", "Daikin AC was turned OFF, set point: {}, temperature: {}", setPoint, temperature)
+        logInfo("daikin", "Daikin AC was turned OFF, mode: {}, set point: {}, temperature: {}", mode, setPoint, temperature)
+    }
+end
+
+rule "daikin - heating - turn on"
+when
+    Time cron "0 0/1 * * * ? *"
+then
+
+    var state = DaikinACUnit_Power.state
+    var mode = DaikinACUnit_Mode.state
+    var setPoint = DaikinACUnit_SetPoint.state as Number
+    var temperature = ThermometerLiving_temperatureliving.state as Number
+
+    if (mode.toString != "HEAT") {
+        logInfo("daikin", "Not in heating mode")
+        return
+    }
+
+    if (temperature < setPoint && state == OFF) {
+        DaikinACUnit_Power.sendCommand(ON)
+        logInfo("daikin", "Daikin AC was turned ON, mode: {}, set point: {}, temperature: {}", mode, setPoint, temperature)
+    }
+end
+
+rule "daikin - heating - turn off"
+when
+    Time cron "0 0/1 * * * ? *"
+then
+    var state = DaikinACUnit_Power.state
+    var mode = DaikinACUnit_Mode.state
+    var setPoint = DaikinACUnit_SetPoint.state as Number
+    var temperature = ThermometerLiving_temperatureliving.state as Number
+
+    if (mode.toString != "HEAT") {
+        logInfo("cooling", "Not in heating mode")
+        return
+    }
+
+    if (temperature > setPoint + 0.2 && state == ON) {
+        DaikinACUnit_Power.sendCommand(OFF)
+        logInfo("daikin", "Daikin AC was turned OFF, mode: {}, set point: {}, temperature: {}", mode, setPoint, temperature)
     }
 end

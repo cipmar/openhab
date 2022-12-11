@@ -1,4 +1,4 @@
-rule "heating - turn on/off"
+rule "heating - turn on"
 when
     Time cron "0 0/1 * * * ? *"
 then
@@ -15,7 +15,18 @@ then
         }
 
         thermostat_last_stop.postUpdate(new DateTimeType(now))
-    } else {
+    }
+end
+
+rule "heating - turn off"
+when
+    Time cron "0 0/1 * * * ? *"
+then
+    var current_temperature = (min_temperature.state as Number).floatValue
+    var current_thermostat_setpoint = (thermostat_setpoint.state as Number).floatValue
+    var previous_thermostat_state = HeatingRelay_Switch.state
+
+    if (current_temperature >= current_thermostat_setpoint + 0.2) {
         HeatingRelay_Switch.sendCommand(OFF)
 
         if (previous_thermostat_state == ON) {
