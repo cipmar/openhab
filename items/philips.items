@@ -1,7 +1,7 @@
 Group philips_lightstrip "Philips Lightstrip" (kitchen) ["Equipment"] { ga = "Light"}
 
 Switch PhilipsLightstrip_State "Power" <lightbulb> (philips_lightstrip) ["Switch", "Light"] { channel = "mqtt:topic:philips_lightstrip:state", ga = "lightPower"}
-Dimmer PhilipsLightstrip_brightness "Brightness" (philips_lightstrip) ["Switch"] { channel = "mqtt:topic:philips_lightstrip:brightness", ga = "lightBrightness"}
+Number PhilipsLightstrip_brightness "Brightness" (philips_lightstrip) ["Switch"] { channel = "mqtt:topic:philips_lightstrip:brightness", ga = "lightBrightness"}
 Color PhilipsLightstrip_Color "Color" <colorlight> (philips_lightstrip) ["Point"] { channel = "mqtt:topic:philips_lightstrip:color", ga = "lightColor"}
 String PhilipsLightstrip_Effect "Effect" (philips_lightstrip) ["Point"] { channel = "mqtt:topic:philips_lightstrip:effect", 
     stateDescription=""[options="blink=blink,breathe=breathe,okay=okay,channel_change=channel_change,finish_effect=finish_effect,stop_effect=stop_effect"]}

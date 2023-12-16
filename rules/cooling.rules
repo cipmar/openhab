@@ -1,6 +1,6 @@
 rule "daikin - cooling - turn on"
 when
-    Time cron "0 0/1 * * * ? *"
+   Time cron "0 0/1 * * * ? *"
 then
 
     var state = DaikinACUnit_Power.state

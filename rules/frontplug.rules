@@ -1,6 +1,6 @@
 rule "front plug - turn on"
 when
-    Time cron "0 0 17 ? * * *" or 
+    Time cron "0 30 16 ? * * *" or 
     Time cron "0 0 6 ? * * *"
 then
     PlugFront_OutputSwitch.sendCommand(ON)

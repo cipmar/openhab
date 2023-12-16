@@ -1,18 +1,3 @@
-Thing mqtt:broker:a188c31189 "MQTT Broker" [
-    clientid = "cfcda536-b860-472f-8463-42bae05b3722", 
-    publickeypin = true,
-    lwtQos = 0,
-    keepAlive = 60,
-    qos = 0,
-    reconnectTime = 60000,
-    port = 1883,
-    host = "localhost",
-    secure = false,
-    certificatepin = true,
-    lwtRetain = true,
-    enableDiscovery = true
-]
-
 Thing sonoff:4:6cfc5a5eaa:10013b65a1 "Irrigation" (sonoff:account:6cfc5a5eaa) @ "Garden" [deviceid = "10013b65a1"]
 
 Thing daikin:ac_unit:192_168_100_195 "Daikin AC Unit" [host = "192.168.100.194", secure = false, refresh = 60]
@@ -130,13 +115,13 @@ Thing mqtt:topic:tablet_statue "Tablet Status" (mqtt:broker:a188c31189) {
 Thing mqtt:topic:philips_lightstrip "Lightstrip - Philips" (mqtt:broker:a188c31189) {
     Channels:
         Type switch : state "State" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPattern = "JSONPATH:$.state", off = "OFF", on = "TOGGLE"]
-        Type number : brightness "Brightness" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPatternOut = "JS:brightness.js", transformationPattern = "JSONPATH:$.brightness"]
+        Type number : brightness "Brightness" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPatternOut = "JS:brightness.js", transformationPattern = "JSONPATH:$.brightness / 254"]
         Type color : color "Color" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", transformationPatternOut = "JS:rgb.js", colorMode = "RGB"]
         Type string : effect "Effect" [commandTopic = "zigbee2mqtt/lightstrip_philips/set", transformationPatternOut = "JS:effect.js"]
         Type number : linkquality "Linkquality" [stateTopic = "zigbee2mqtt/lightstrip_philips", transformationPattern = "JSONPATH:$.linkquality"]
 }
 
-Thing tapocontrol:P100:5cd79ad614 "Plug - Tablet" (tapocontrol:bridge:1043758637) [ipAddress = "192.168.100.126", pollingInterval = 10 ]
+Thing tapocontrol:P100:5cd79ad614 "Front Plug" (tapocontrol:bridge:1043758637) [ipAddress = "192.168.100.126", pollingInterval = 10, protocol = "KLAP" ]
 
 Thing mqtt:topic:plug_kitchen "Plug - Daikin" (mqtt:broker:a188c31189) {
     Channels:
