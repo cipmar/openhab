@@ -165,4 +165,4 @@ Thing logreader:reader:fc2ea0e633 "Log Reader" [refreshRate = 1000, warningPatte
 
 Thing chromecast:chromecast:0e155e762891af7384c7630078e01aaa "Living TV" [ipAddress = "192.168.100.157", port= 8009, refreshRate = 5]
 
-Thing miio:basic:edb690e6a2 "Lightstrip - Xiaomi" [cloudServer = "de", refreshInterval = 30, host = "192.168.100.115", model = "yeelink.light.strip2", communication = "direct", deviceId = "313144772", timeout = 15000, token = "c2c9d2b9c07df8ccb31b598623e6ab81"]
+// Thing miio:basic:edb690e6a2 "Lightstrip - Xiaomi" [cloudServer = "de", refreshInterval = 30, host = "192.168.100.115", model = "yeelink.light.strip2", communication = "direct", deviceId = "313144772", timeout = 15000, token = "c2c9d2b9c07df8ccb31b598623e6ab81"]
