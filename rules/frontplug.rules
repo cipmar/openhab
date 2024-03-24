@@ -3,7 +3,7 @@ when
     Time cron "0 30 16 ? * * *" or 
     Time cron "0 0 6 ? * * *"
 then
-    PlugFront_OutputSwitch.sendCommand(ON)
+    PlugFront_OutputSwitch.sendCommand(OFF)
 end
 
 rule "front plug - turn off"
